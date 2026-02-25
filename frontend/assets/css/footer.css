@@ -1,0 +1,19 @@
+footer .btn-outline-secondary {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+footer .btn-outline-secondary:hover {
+    color: var(--accent-color, #38bdf8);
+    border-color: var(--accent-color, #38bdf8);
+    background-color: transparent;
+    transform: translateY(-3px);
+}
+
+footer .nav-link:hover {
+    color: var(--accent-color, #38bdf8) !important;
+}

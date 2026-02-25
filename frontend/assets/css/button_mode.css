@@ -1,0 +1,34 @@
+/* Variáveis para o Modo Escuro */
+[data-bs-theme="dark"] body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) fixed;
+    color: #f8fafc;
+}
+
+/* Variáveis para o Modo Claro */
+[data-bs-theme="light"] body {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) fixed;
+    color: #0f172a;
+}
+
+#sobre {
+    /* Gradiente que começa na cor do fundo e termina levemente mais claro */
+    background: linear-gradient(to bottom, var(--bs-body-bg), var(--bs-body-tertiary-bg));
+    padding: 100px 0;
+}
+
+#projetos {
+    /* Gradiente inverso para criar o efeito de "caixa" */
+    background: linear-gradient(to top, var(--bs-body-bg), var(--bs-body-tertiary-bg));
+    padding: 100px 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}

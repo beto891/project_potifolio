@@ -1,0 +1,96 @@
+:root {
+    --bg-dark-primary: #0f172a;    /* Azul marinho muito escuro */
+    --bg-dark-secondary: #1e293b;  /* Tom ligeiramente mais claro para cards */
+    --accent-color: #38bdf8;       /* Azul claro para links e botões */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+body {
+    background-color: var(--bg-dark-primary);
+    color: var(--text-main);
+    font-family: 'Ubuntu', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+/* Customização da Navbar */
+.navbar {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    border-bottom: 1px solid #334155;
+}
+
+/* Cards de Projetos no Dark Mode */
+.card {
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid #334155;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.card-title {
+    color: var(--text-main);
+}
+
+.card-text {
+    color: var(--text-muted);
+}
+
+/* Badges de Tecnologia */
+.badge {
+    background-color: #334155 !important;
+    color: var(--accent-color) !important;
+    border: 1px solid var(--accent-color);
+    font-weight: 500;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--bg-dark-primary);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #7dd3fc;
+    color: var(--bg-dark-primary);
+}
+
+.card-img-top {
+    filter: brightness(0.9) contrast(1.1);
+}
+
+
+/* Mascote */
+.hero-section {
+    min-height: 60vh; /* Garante uma altura mínima boa para o vídeo aparecer */
+    display: flex;
+    align-items: center;
+    color: white; /* Geralmente vídeos pedem texto claro */
+    position: relative;
+    background-color: #000;
+}
+
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0; /* Vídeo na camada base */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.5; /* Ajuste a opacidade para não atrapalhar a leitura do texto */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1; /* Conteúdo acima do vídeo */
+}
