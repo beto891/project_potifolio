@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/button_mode.css">
     <link rel="stylesheet" href="assets/css/animated_card.css">
-    <link rel="stylesheet" href="assets/css/whatsapp.css    ">
+    <link rel="stylesheet" href="assets/css/whatsapp.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-lg sticky-top border-bottom border-secondary">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="#">{{ user.name }}</a>
+                <a class="navbar-brand fw-bold text-info" href="#">
+                    <i class="fas fa-code"></i>
+                </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -40,17 +42,20 @@
             </div>
         </nav>
 
-       <header class="hero-section text-center position-relative overflow-hidden py-5">
+       <header id="hero" class="text-center py-5 d-flex align-items-center" style="min-height: 100vh;">
+           <img src="./assets/img/nebulosa.jpg" alt="Nebulosa" 
+           class="img-bg rellax position-absolute img-dark w-100 h-100" data-rellax-speed="-3"  style="object-fit: cover; z-index: 0;">
+            
+           <img src="./assets/img/photo.jpg" class="overlay-img rellax img-dark ">
 
-            <video autoplay muted loop playsinline class="video-bg">
-                <source src="./assets/img/hero-video.mp4" type="video/mp4">
-            </video>
 
-            <div class="container">
-                <h1 class="display-4 fw-bold">{{ user.role }}</h1>
-                <p class="lead text-secondary">{{ user.bio }}</p>
+            <div id="three-canvas-container" class="position-absolute w-100 h-100 rellax" data-rellax-speed="2" style="z-index: 1; pointer-events: none;"></div>
+
+            <div class="container position-relative rellax" data-rellax-speed="4" style="z-index: 2;">
+                <h1 class="display-4 fw-bold text-white">{{ user.role }}</h1>
+                <p class="lead text-light opacity-75">{{ user.bio }}</p>
                 <div class="mt-4">
-                    <a href="#contato" class="btn btn-primary btn-lg px-4">Fale Comigo</a>
+                    <a href="#contato" class="btn btn-primary btn-lg px-4 shadow-lg">Fale Comigo</a>
                 </div>
             </div>
         </header>
@@ -99,8 +104,12 @@
         </section>
 
         <section id="projetos" class="py-5">
+
+            <img src="./assets/img/planeta.jpg" alt="Nebulosa" 
+           class="img-bg rellax position-absolute w-100 h-100" data-rellax-speed="-3" data-rellax-percentage="0.5" style="object-fit: cover; z-index: 0; ">
+
             <div class="container">
-                <h2 class="text-center mb-5 fw-bold">Meus Projetos</h2>
+                <h1 class="text-center mb-5 fw-bold">Projetos em Destaques</h1>
                 
                 <transition-group name="list" tag="div" class="row g-4">
                     <div class="col-12 col-md-6 col-lg-4" v-for="projeto in projetos" :key="projeto.id">
@@ -128,11 +137,48 @@
             </div>
         </section>
 
-        <footer class="py-5 bg-body-tertiary border-top border-secondary mt-5">
+        <section id="stack" class="py-5 position-relative overflow-hidden">
+            <div class="position-absolute text-info opacity-10 rellax" data-rellax-speed="-1" style="top: 5%; left: 10%; font-size: 8rem;">
+                <i class="fas fa-code"></i>
+            </div>
+
+            <div class="container position-relative" style="z-index: 2;">
+                <h2 class="text-center mb-5 fw-bold text-white">Stack tecnológica</h2>
+                
+                <div class="row g-4 justify-content-center">
+                    <div v-for="item in techStack" :key="item.titulo" class="col-md-4 rellax" :data-rellax-speed="item.velocidade">
+                        <div class="card h-100 p-4 bg-body-tertiary border-secondary border-opacity-25 card-hover shadow-lg">
+                            <div class="text-info mb-3 fs-1"><i :class="item.icone"></i></div>
+                            <h4 class="fw-bold">{{ item.titulo }}</h4>
+                            <p class="text-secondary small">{{ item.descricao }}</p>
+                            <div class="d-flex flex-wrap gap-2 mt-auto">
+                                <span v-for="tag in item.tags" :key="tag" class="badge bg-dark border border-secondary">
+                                    {{ tag }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contato" class="py-5">
+           <img src="./assets/img/astronauta.jpg" 
+                class="img-bg rellax" 
+                data-rellax-speed="-1" 
+                data-rellax-percentage="0.5">
+            <div class="container">
+                <h1 class="text-center text-white mb-5 fw-bold">Vamos criar algo incrível?</h1>
+                <h4 class="text-center text-white">Entre em contato comigo e vamos transformar ideias em realidade digital</h4>
+
+            </div>
+        </section>
+
+        <footer class="py-5 position-relative overflow-hidden custom-footer">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                        <span class="fw-bold fs-5">{{ user.name }}</span>
+                        <!-- <span class="fw-bold fs-5">{{ user.name }}</span> -->
                         <p class="text-secondary small mb-0">© 2026 - Todos os direitos reservados.</p>
                     </div>
 
@@ -145,10 +191,10 @@
                     </div>
 
                     <div class="col-md-4 text-center text-md-end">
-                        <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle me-2">
+                        <a href="https://www.linkedin.com/in/ediberto-santana-4b1113272/" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle me-2">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/seu-usuario" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle me-2">
+                        <a href="https://github.com/beto891" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle me-2">
                             <i class="fab fa-github"></i>
                         </a>
                         <a href="mailto:seu-email@gmail.com" class="btn btn-outline-secondary btn-sm rounded-circle">
@@ -158,26 +204,27 @@
                 </div>
             </div>
         </footer>
+
+             <div v-if="showWhatsappAlert" class="custom-whatsapp-popup">
+                <div class="popup-content">
+                    <a href="https://wa.me/5598984899760" target="_blank" class="popup-link">
+                        <div class="popup-icon">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="online-indicator"></span>
+                        </div>
+                        <div class="popup-text">
+                            <span class="popup-name">Ediberto Santana</span>
+                            <span class="popup-msg">Olá! Como posso ajudar hoje?</span>
+                        </div>
+                    </a>
+                    <button @click="showWhatsappAlert = false" class="popup-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
     </div>
 
-    <div v-if="showWhatsappAlert" class="custom-whatsapp-popup">
-        <div class="popup-content">
-            <a href="https://wa.me/5598984899760" target="_blank" class="popup-link">
-                <div class="popup-icon">
-                    <i class="fab fa-whatsapp"></i>
-                    <span class="online-indicator"></span>
-                </div>
-                <div class="popup-text">
-                    <span class="popup-name">Ediberto Santana</span>
-                    <span class="popup-msg">Olá! Como posso ajudar hoje?</span>
-                </div>
-            </a>
-            <button @click="showWhatsappAlert = false" class="popup-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

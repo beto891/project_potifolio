@@ -67,6 +67,12 @@
     align-items: center;
 }
 
+.popup-link {
+    display: flex;
+    text-decoration: none;
+    padding-right: 25px; /* Espaço para o botão X não ser atropelado */
+}
+
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
